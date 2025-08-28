@@ -5,7 +5,7 @@ $containerregistry = "campio2025flcr"
 
 az acr login --name $containerregistry
 
-$containerimage = "campio2025flcr.azurecr.io/fastapi-mcp-svr:v38"
+$containerimage = "campio2025flcr.azurecr.io/fastapi-mcp-svr:v39"
 
 docker build --pull --rm -f "Dockerfile" -t fastapi-mcp-svr:latest .
 docker tag fastapi-mcp-svr:latest $containerimage

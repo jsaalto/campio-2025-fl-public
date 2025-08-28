@@ -703,6 +703,18 @@ def db_load_stage_to_hours_of_operation(session_uid: str):
     except Exception as db_exc:
         print(f"Database error: {db_exc}")
 
+def db_load_stage_to_product_offering(session_uid: str):
+    conn_str = db_get_connection_string()
+    try:
+        with pyodbc.connect(conn_str) as pold_conn:
+            pold_cursor = pold_conn.cursor()
+            pold_cursor.execute("EXEC [Establishments].[mbl_upsert_Venue_Product_Offerings] ?", session_uid)
+            pold_conn.commit()
+        print(f"Product Offerings Data loaded for session: {session_uid}")
+        return f"Success. Product Offerings Data loaded for session: {session_uid}"
+    except Exception as db_exc:
+        print(f"Database error: {db_exc}")
+
 def db_get_venue_name(venue: str):
     conn_str = db_get_connection_string()
     try:

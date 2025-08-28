@@ -1,7 +1,7 @@
 from typing import Optional
 from fx_cu import cu_analyzer_main
 from fx_db import db_upsert_wifi_network_password, db_image_to_content_upsert, db_output_list_to_stage, db_get_business_list_by_lat_lon
-from fx_db import db_load_stage_to_hours_of_operation, db_load_stage_to_wifi
+from fx_db import db_load_stage_to_hours_of_operation, db_load_stage_to_wifi, db_load_stage_to_product_offering
 from fx_image_processing import img_initial_image_process
 from fx_utilities import get_gps_coordinates
 import os
@@ -27,12 +27,11 @@ def process_confirm_commit_hil(session_uid: str, process_hil: str):
         resp = db_load_stage_to_hours_of_operation(session_uid)
     elif process_hil == "wifi_password":
         resp = db_load_stage_to_wifi(session_uid)
+    elif process_hil == "product_offerings":
+        resp = db_load_stage_to_product_offering(session_uid)
     elif process_hil == "tap_list":
         print("placeholder")
         # resp = db_load_stage_to_tap_list(session_uid)
-    elif process_hil == "product_offerings":
-        print("placeholder")
-        # resp = db_load_stage_to_product_offerings(session_uid)
     elif process_hil == "business_general":
         print("placeholder")
         # resp = db_load_stage_to_business_general(session_uid)
@@ -72,15 +71,16 @@ def process_wifi_password_image(blob_url: str, venue: str):
     return {"Wifi Image processed into database"}
 
 # if __name__ == "__main__":
-#     # egg stand
-#     # content_url = "https://campio2025flmobile.blob.core.windows.net/mobile-uploaded-images/new-business/IMG_8044.HEIC"
-#     # brewery wifi - With Venue
-#     content_url = "https://campio2025flmobile.blob.core.windows.net/mobile-uploaded-images/hours-of-operation/barreled_souls_20250616_20250622.png"
-#     venue = "VNU#barreledsouls.com#web"
-#     resp = initial_image_process(content_url, venue)
-#     # resp = initial_image_process(content_url, venue)
-#     # session_uid = '03627dab-4db9-4052-b724-ff6459871fe4'
-#     # resp = db_load_stage_to_hours_of_operation(session_uid)
-#     print(resp)
+    # egg stand
+    # content_url = "https://campio2025flmobile.blob.core.windows.net/mobile-uploaded-images/new-business/IMG_8044.HEIC"
+    # brewery wifi - With Venue
+    # content_url = "https://campio2025flmobile.blob.core.windows.net/mobile-uploaded-images/new-business/chris-farmstand.jpg"
+    # venue = "VNU#chrisfarmstand.com#haverhill#web"
+    # resp = initial_image_process(content_url, venue)
+    # resp = initial_image_process(content_url, venue)
+    # session_uid = '67b6c149-c996-49f9-ad55-f83967e0d2f8'
+    # process_hil = "product_offerings"
+    # resp =  process_confirm_commit_hil(session_uid, process_hil)
+    # print(resp)
     
-#     print("Processing complete.")
+    # print("Processing complete.")
