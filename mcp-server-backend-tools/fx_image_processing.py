@@ -453,7 +453,7 @@ def img_initial_image_process(image_url: str, venue: Optional[str] = None, lat: 
             prod_list = ', '.join(prod_list)
         db_response = db_stage_product_offering_data(session_uid=session_uid, is_new_business=new_business_flag, business_name=business_name,
                         business_type=business_type_string, latitude=lat, longitude=lon, full_address_string=full_address_string, venue=venue,
-                        product_list=prod_list, content_url=content_url, stage_datetime=datetime.now())
+                        product_list=prod_list, content_url=image_url, stage_datetime=datetime.now())
         print(f"Extracted product offerings: {prod_list}")
     elif category == "business_general":
         # General business image - business type classification will happen for all, so not done here.
