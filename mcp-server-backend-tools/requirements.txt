@@ -1,0 +1,11 @@
+fastapi
+fastapi_mcp
+uvicorn
+pyodbc
+azure.storage.blob
+selenium
+markdownify
+Pillow
+pillow_heif
+requests
+base64
