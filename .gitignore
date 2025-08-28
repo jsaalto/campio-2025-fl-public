@@ -14,6 +14,7 @@ VENV/
 .venv/
 ENV*/
 venv*/
+.env
 
 # Distribution / packaging
 .Python
