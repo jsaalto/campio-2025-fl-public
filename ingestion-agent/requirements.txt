@@ -1,0 +1,8 @@
+
+langgraph
+langchain_openai
+azure-identity
+selenium
+markdownify
+azure-storage-blob
+geopy
